@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const config = require('./config');
+const {addUser} = require('./controllers/UserController');
 
 const app = express(); //this is our application/website, which is important
 
@@ -12,11 +13,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function (req, res, next) {
-    res.sendFile('C:\Users\sunke\Desktop\Kellen\Programming\Javascript\TestFirebase\main.html');
+    res.sendFile('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/main.html');
 });
 app.post('/', function (req, res, next) {
     console.log(req.body);
-    register(req, res, next);
+    addUser(req, res, next);
     res.send('User created successfully');
 });
 

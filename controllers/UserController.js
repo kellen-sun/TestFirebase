@@ -1,5 +1,5 @@
-const firebase = require(‘../db’);
-const User = require(‘../models/student’);
+const firebase = require('../db');
+const User = require('../models/users');
 const firestore = firebase.firestore();
 const addUser = async (req, res, next) => {
     try {
