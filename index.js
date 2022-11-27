@@ -16,11 +16,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/static'));
 
 app.get('/home', function (req, res, next) {
-    res.sendFile('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html');
+    res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html');
 });
 
 app.get('/newUser', function (req, res, next) {
-    res.sendFile('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/newUser.html');
+    res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/newUser.html');
 });
 
 app.post('/newUser', function (req, res, next) {
@@ -31,6 +31,10 @@ app.post('/newUser', function (req, res, next) {
     addUser(req, res, next);
     //renders the newuser webpage with the data
     res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/newUser.html', { username: data });
+});
+
+app.post('/home', function (req, res, next) {
+    res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html')
 });
 
 app.listen(config.port, () => console.log('App is listening on url http://localhost:' + config.port));
