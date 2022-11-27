@@ -14,15 +14,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/static'));
-
+/*
 app.get('/home', function (req, res, next) {
-    res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html');
+    //res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html');
 });
 
 app.get('/newUser', function (req, res, next) {
     res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/newUser.html');
 });
-
+*/
 app.post('/newUser', function (req, res, next) {
     var data = req.body.username;
     console.log(data);
