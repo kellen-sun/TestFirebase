@@ -16,8 +16,8 @@ app.use(express.static('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/Tes
 
 app.get('/', function (req, res, next) {
     res.sendFile('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html');
-    
 });
+
 app.post('/', function (req, res, next) {
     console.log(req.body);
     addUser(req, res, next);
