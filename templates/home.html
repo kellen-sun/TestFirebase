@@ -4,15 +4,32 @@
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <title>Home</title>
-   <link href="/static/style.css" rel="stylesheet" type="text/css">
+   <link rel="stylesheet" href="C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/static/style.css" type="text/css">
+   <style>
+    body {
+    background-color: lightblue;
+    }
+
+    h1 {
+        color: white;
+        text-align: center;
+    }
+      
+    p {
+      font-family: verdana;
+      font-size: 20px;
+    }
+   </style>
  </head>
+
+
  <body>
    <h1>Create User</h1>
    <form id="createUser" action="/" method="post">
        <label for="username">Username:</label><br>
        <input type="text" id="username" name="username" value=""><br>
-       <!--<label for="email">Email:</label><br>
-       <input type="text" id="email" name="email" value=""><br>-->
+       <label for="email">Email:</label><br>
+       <input type="text" id="email" name="email" value=""><br>
        <label for="password">Password:</label><br>
        <input type="text" id="password" name="password" value=""><br><br>
        <input type="submit" value="Submit">

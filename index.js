@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function (req, res, next) {
-    res.sendFile('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/main.html');
+    res.sendFile('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html');
 });
 app.post('/', function (req, res, next) {
     console.log(req.body);
