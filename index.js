@@ -1,3 +1,4 @@
+'use strict';
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -13,7 +14,9 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//makes the static files accessible to the webpages
 app.use(express.static('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/static'));
+
 /*
 app.get('/home', function (req, res, next) {
     //res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html');

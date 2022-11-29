@@ -5,6 +5,7 @@ body {
 h1 {
     color: white;
     text-align: center;
+    font-family: verdana;
 }
   
 p {
@@ -18,4 +19,9 @@ body {
 
 input.button {
   color: lightblue;
+}
+
+label {
+  color: white;
+  font-family: Verdana;
 }
