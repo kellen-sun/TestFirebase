@@ -14,8 +14,11 @@
     </p>
 
     <h1>WELCOME <%= username %>!</h1>
-    <form id="back" action="home" method="POST">
+    <form id="back" action="/home" method="POST">
         <input class = "button" type="submit" value="Back">
+    </form>
+    <form id="update" action="/updateUser" method="GET">
+        <input class = "button" type="submit" value="update information">
     </form>
  </body>
 </html>

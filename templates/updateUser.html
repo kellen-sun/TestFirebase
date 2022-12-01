@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <title>Home</title>
+   <link rel="stylesheet" href="../style.css" type="text/css">
+ </head>
+
+ <body>
+    <p>
+        Please update your settings.
+    </p>
+    <form id="updateUser" action="/updateUser" method="POST">
+        <label for="newUsername">New Username:</label><br>
+        <input type="text" id="newUsername" name="newUsername" value=""><br>
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email" value=""><br>
+        <label for="oldPassword">Old Password:</label><br>
+        <input type="text" id="oldPassword" name="oldPassword" value=""><br>
+        <label for="newPassword">New Password:</label><br>
+        <input type="text" id="newPassword" name="newPassword" value=""><br><br>
+        <input type="submit" value="Submit">
+      </form>
+
+ </body>
+</html>
