@@ -10,6 +10,9 @@
 
  <body>
    <h1>Create User</h1>
+   <p>
+    <%= error %>
+   </p>
    <form id="createUser" action="/newUser" method="POST">
        <label for="username">Username:</label><br>
        <input type="text" id="username" name="username" value=""><br>
