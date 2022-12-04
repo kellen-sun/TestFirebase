@@ -25,6 +25,7 @@ app.post('/newUser', async (req, res, next) => {
     var success = createUser(req, res, next);
     console.log(success);
     success.then(function(result) {
+        console.log(result)
         if (result[0]){
             res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/newUser.html', { username: data });
         } else if (result[1]=="1"){
@@ -42,7 +43,9 @@ app.get('/', function (req, res, next) {
 app.post('/home/:error', function (req, res, next) {
     if (req.param('error')=='error1'){
         res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "One of the fields is empty" });
-    } else {
+    } else if (req.param('error')=='error2'){
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "Username already taken" });
+    }else {
         res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "" });
     }
 });
@@ -55,6 +58,14 @@ app.get('/home/:error', function (req, res, next) {
     }else {
         res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "" });
     }
+});
+
+app.get('/home', function (req, res, next) {
+    res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "" });
+});
+
+app.post('/home', function (req, res, next) {
+    res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "" });
 });
 
 app.get('/updateUser', function (req, res, next) {
@@ -74,7 +85,7 @@ app.post('/updateUser', async (req, res, next) => {
 
 app.get('/users/:name', async (req, res, next) => {
     var name = req.param('name');
-    var success = await checkUser(req, res, next);
+    var success = await checkUser(req, res, next, name);
     console.log(success)
     if (success) {
         console.log("user exists");

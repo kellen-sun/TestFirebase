@@ -5,10 +5,10 @@ const User = require('../models/users');
 const firestore = firebase.firestore();
 const { openDelimiter } = require('ejs');
 
-const checkUser = async (req, res, next) => {
+const checkUser = async (req, res, next, name) => {
     try {
         const data = req.body;
-        var name = req.param('name');
+        //var name = req.param('name');
         const db = firestore.collection('users');
         const snapshot = await db.where('username', '==', name).get();
         if (snapshot.empty) {
@@ -27,13 +27,12 @@ const createUser = async (req, res, next) => {
     try {
         const data = req.body;
         var name = data.username;
-        var success = await checkUser(req, res, next);
         if (data.email && data.password && data.username) {
             //checks if it's nonnzero inputs
             await firestore.collection('users').doc().set(data);
             //now checking if username is taken
-            var success1 = await checkUser(req, res, next);
-            //console.log(success)
+            var success1 = await checkUser(req, res, next, name);
+            console.log(success1)
             if (success1) {
                 //console.log("user exists");
                 return [false, "2"];
