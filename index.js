@@ -28,12 +28,9 @@ app.post('/newUser', function (req, res, next) {
         if (result){
             res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/newUser.html', { username: data });
         } else {
-            var errorMessage = "One of the fields is empty";
             res.redirect('/home/error1');
-            //res.render("C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html", { error: errorMessage });
         };
     });
-    //renders the newuser webpage with the data  
 });
 
 app.get('/', function (req, res, next) {
@@ -74,6 +71,7 @@ app.get('/users/:name', async (req, res, next) => {
     console.log("Username is");
     var name = req.param('name');
     console.log(name);
+    //shuold only happen if name is in the database
     res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/user.html', { username: name });
 });
 
