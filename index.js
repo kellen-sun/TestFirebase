@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const config = require('./config');
-const {createUser, readUser, updateUser, deleteUser} = require('./controllers/UserController');
+const {createUser, readUser, updateUser, deleteUser, checkUser} = require('./controllers/UserController');
 
 const app = express(); //this is our application/website, which is important
 app.set('view engine', 'html');
@@ -59,6 +59,7 @@ app.get('/updateUser', function (req, res, next) {
 
 app.post('/updateUser', async (req, res, next) => {
     const result = await updateUser(req, res, next);
+    //result[0] is a boolean value right now, if changed in UserController.js will need to update this side too
     if (result[0]) {
         res.redirect('/home');
     }
@@ -68,11 +69,19 @@ app.post('/updateUser', async (req, res, next) => {
 });
 
 app.get('/users/:name', async (req, res, next) => {
-    console.log("Username is");
     var name = req.param('name');
-    console.log(name);
-    //shuold only happen if name is in the database
-    res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/user.html', { username: name });
+    
+    //should only happen if name is in the database
+    var success = await checkUser(req, res, next);
+    console.log(success)
+    if (success) {
+        console.log("user exists");
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/users.html', { username: name });
+    } else {
+        console.log("user does not exist");
+        res.send("User does not exist")
+    }
+
 });
 
 app.listen(config.port, () => console.log('App is listening on url http://localhost:' + config.port));

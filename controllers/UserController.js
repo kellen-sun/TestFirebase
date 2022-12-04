@@ -5,6 +5,24 @@ const User = require('../models/users');
 const firestore = firebase.firestore();
 const { openDelimiter } = require('ejs');
 
+const checkUser = async (req, res, next) => {
+    try {
+        const data = req.body;
+        var name = req.param('name');
+        const db = firestore.collection('users');
+        const snapshot = await db.where('username', '==', name).get();
+        if (snapshot.empty) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    catch (error) {
+        console.log(error.message);
+    }
+};
+
 const createUser = async (req, res, next) => {
     try {
         const data = req.body;
@@ -108,5 +126,6 @@ module.exports = {
     createUser,
     readUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    checkUser
 };
