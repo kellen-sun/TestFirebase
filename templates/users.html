@@ -11,9 +11,22 @@
     <p>
         Hi <%= username %>!
     </p>
+    <p>Update your account information below:</p>
     <form id="updateUser" action="/updateUser" method="GET">
       <input type="submit" value="Update Info">
     </form>
 
+    <br><br>
+
+    <p>Delete Account:</p>
+    <p>Verify credentials to confirm you wish to delete your account (this process is irreversible)</p>
+    <form id="deleteUser" action="/users" method="POST">
+      <label for="email">Enter Email:</label><br>
+      <input type="text" id="email" name="email" value=""><br>
+
+      <label for="password">Enter Password:</label><br>
+      <input type="text" id="password" name="password" value=""><br>
+      <input type="submit" value="Delete Account">
+    </form>
  </body>
 </html>

@@ -86,14 +86,28 @@ app.post('/updateUser', async (req, res, next) => {
 app.get('/users/:name', async (req, res, next) => {
     var name = req.param('name');
     var success = await checkUser(req, res, next, name);
-    console.log(success)
+    //console.log(success);
     if (success) {
-        console.log("user exists");
+        //console.log("user exists");
         res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/users.html', { username: name });
     } else {
-        console.log("user does not exist");
-        res.send("User does not exist")
+        //console.log("user does not exist");
+        res.send("User does not exist");
     }
+});
+
+app.post('/users', async (req, res, next) => {
+    var success = deleteUser(req, res, next);
+    success.then(function(result) {
+        //console.log(result)
+        if (result[0]) {
+            console.log("Account deleted");
+            res.send("Account deleted successfully :(");
+        } else {
+            console.log(result[1]);
+            res.send(result[1]);
+        }
+    });
 });
 
 app.listen(config.port, () => console.log('App is listening on url http://localhost:' + config.port));

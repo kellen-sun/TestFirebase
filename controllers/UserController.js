@@ -57,7 +57,7 @@ const updateUser = async (req, res, next) => {
     try {
         const data = req.body;
         console.log(data);
-        var output = [false, 'Email not found!'];
+        var output = [false, 'Incorrect Email'];
         const user = await firestore.collection('users').where("email", "==", data.email)
             .get()
             .then((querySnapshot) => {
@@ -88,7 +88,7 @@ const updateUser = async (req, res, next) => {
 const deleteUser = async (req, res, next) => {
     try {
         const data = req.body;
-        var output = [false, 'Email not found!'];
+        var output = [false, 'Incorrect Email'];
         const user = await firestore.collection('users').where("email", "==", data.email)
             .get()
             .then((querySnapshot) => {
