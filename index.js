@@ -57,4 +57,11 @@ app.post('/updateUser', async (req, res, next) => {
     }
 });
 
+app.get('/users/:name', async (req, res, next) => {
+    console.log("Username is");
+    var name = req.param('name');
+    console.log(name);
+    res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/user.html', { username: name });
+});
+
 app.listen(config.port, () => console.log('App is listening on url http://localhost:' + config.port));
