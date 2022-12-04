@@ -29,7 +29,8 @@ app.post('/newUser', function (req, res, next) {
             res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/newUser.html', { username: data });
         } else {
             var errorMessage = "One of the fields is empty";
-            res.render("C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html", { error: errorMessage });
+            res.redirect('/home/error1');
+            //res.render("C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html", { error: errorMessage });
         };
     });
     //renders the newuser webpage with the data  
@@ -39,8 +40,20 @@ app.get('/', function (req, res, next) {
     res.redirect('/home');
 });
 
-app.post('/home', function (req, res, next) {
-    res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "" });
+app.post('/home/:error', function (req, res, next) {
+    if (req.param('error')=='error1'){
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "One of the fields is empty" });
+    } else {
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "" });
+    }
+});
+
+app.get('/home/:error', function (req, res, next) {
+    if (req.param('error')=='error1'){
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "One of the fields is empty" });
+    } else {
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "" });
+    }
 });
 
 app.get('/updateUser', function (req, res, next) {
