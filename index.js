@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //makes the static files accessible to the webpages
 app.use(express.static('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/static'));
 
-app.post('/newUser', function (req, res, next) {
+app.post('/newUser', async (req, res, next) => {
     var data = req.body.username;
     console.log(data);
     //console.log(req);
@@ -25,10 +25,12 @@ app.post('/newUser', function (req, res, next) {
     var success = createUser(req, res, next);
     console.log(success);
     success.then(function(result) {
-        if (result){
+        if (result[0]){
             res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/newUser.html', { username: data });
-        } else {
+        } else if (result[1]=="1"){
             res.redirect('/home/error1');
+        } else if (result[1]=="2"){
+            res.redirect('/home/error2');
         };
     });
 });
@@ -48,7 +50,9 @@ app.post('/home/:error', function (req, res, next) {
 app.get('/home/:error', function (req, res, next) {
     if (req.param('error')=='error1'){
         res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "One of the fields is empty" });
-    } else {
+    } else if (req.param('error')=='error2'){
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "Username already taken" });
+    }else {
         res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "" });
     }
 });
@@ -70,8 +74,6 @@ app.post('/updateUser', async (req, res, next) => {
 
 app.get('/users/:name', async (req, res, next) => {
     var name = req.param('name');
-    
-    //should only happen if name is in the database
     var success = await checkUser(req, res, next);
     console.log(success)
     if (success) {
@@ -81,7 +83,6 @@ app.get('/users/:name', async (req, res, next) => {
         console.log("user does not exist");
         res.send("User does not exist")
     }
-
 });
 
 app.listen(config.port, () => console.log('App is listening on url http://localhost:' + config.port));

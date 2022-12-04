@@ -26,15 +26,27 @@ const checkUser = async (req, res, next) => {
 const createUser = async (req, res, next) => {
     try {
         const data = req.body;
+        var name = data.username;
+        var success = await checkUser(req, res, next);
         if (data.email && data.password && data.username) {
             //checks if it's nonnzero inputs
             await firestore.collection('users').doc().set(data);
-            return true;
+            //now checking if username is taken
+            var success1 = await checkUser(req, res, next);
+            //console.log(success)
+            if (success1) {
+                //console.log("user exists");
+                return [false, "2"];
+            } else {
+                //console.log("user does not exist");
+                return [true];
+            } 
         }
         else {
-            //so now it won't create the user (in the database) if one of the fields is empty but it'll still redirect to the newuser page
+            //so now it won't create the user (in the database) if one of the fields is empty
+            
             console.log("Empty field.")
-            return false;
+            return [false, "1"];
         }
     }
     catch (error) {
