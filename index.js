@@ -32,6 +32,8 @@ app.post('/newUser', async (req, res, next) => {
             res.redirect('/home/error1');
         } else if (result[1]=="2"){
             res.redirect('/home/error2');
+        } else if (result[1]=="3"){
+            res.redirect('/home/error3');
         };
     });
 });
@@ -45,7 +47,9 @@ app.post('/home/:error', function (req, res, next) {
         res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "One of the fields is empty" });
     } else if (req.param('error')=='error2'){
         res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "Username already taken" });
-    }else {
+    } else if (req.param('error')=='error3') {
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "Email already taken" });
+    } else {
         res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "" });
     }
 });
@@ -55,7 +59,9 @@ app.get('/home/:error', function (req, res, next) {
         res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "One of the fields is empty" });
     } else if (req.param('error')=='error2'){
         res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "Username already taken" });
-    }else {
+    } else if (req.param('error')=='error3') {
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "Email already taken" });
+    } else {
         res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/home.html', { error: "" });
     }
 });

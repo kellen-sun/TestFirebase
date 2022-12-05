@@ -23,10 +23,28 @@ const checkUser = async (req, res, next, name) => {
     }
 };
 
+const checkEmail = async (req, res, next, email) => {
+    try {
+        const data = req.body;
+        const db = firestore.collection('users');
+        const snapshot = await db.where('email', '==', email).get();
+        if (snapshot.empty) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    catch (error) {
+        console.log(error.message);
+    }
+};
+
 const createUser = async (req, res, next) => {
     try {
         const data = req.body;
         var name = data.username;
+        var email = data.email;
         if (data.email && data.password && data.username) {
             //checks if it's nonnzero inputs
             
@@ -38,8 +56,14 @@ const createUser = async (req, res, next) => {
                 return [false, "2"];
             } else {
                 //console.log("user does not exist");
-                await firestore.collection('users').doc().set(data);
-                return [true];
+                var success2 = await checkEmail(req,res,next,email);
+                if (success2) {
+                    return [false, "3"]
+                } else {
+                    await firestore.collection('users').doc().set(data);
+                    return [true];
+                }
+                
             } 
         }
         else {
@@ -138,5 +162,6 @@ module.exports = {
     readUser,
     updateUser,
     deleteUser,
-    checkUser
+    checkUser,
+    checkEmail
 };
