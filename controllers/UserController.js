@@ -133,20 +133,15 @@ const deleteUser = async (req, res, next) => {
     }
 }
 
-const readUser = async (req, res, next) => {
+const findEmail = async (req, res, next, name) => {
     try {
         const data = req.body;
-        var output = [false, 'Email not found!'];
-        const user = await firestore.collection('users').where("email", "==", data.email)
+        var output = 'Email not found!';
+        const user = await firestore.collection('users').where("username", "==", name)
             .get()
             .then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    if (doc.data().password == data.password) {
-                        output = [true, doc.data()];
-                    }
-                    else {
-                        output = [false, 'Incorrect Password'];
-                    }
+                querySnapshot.forEach((doc) => { 
+                  output = doc.data().email;
                 });
             });
         return(output);
@@ -159,7 +154,7 @@ const readUser = async (req, res, next) => {
 
 module.exports = {
     createUser,
-    readUser,
+    findEmail,
     updateUser,
     deleteUser,
     checkUser,

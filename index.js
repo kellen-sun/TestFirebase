@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const config = require('./config');
-const {createUser, readUser, updateUser, deleteUser, checkUser} = require('./controllers/UserController');
+const {createUser, findEmail, updateUser, deleteUser, checkUser} = require('./controllers/UserController');
 
 const app = express(); //this is our application/website, which is important
 app.set('view engine', 'html');
@@ -92,10 +92,11 @@ app.post('/updateUser', async (req, res, next) => {
 app.get('/users/:name', async (req, res, next) => {
     var name = req.param('name');
     var success = await checkUser(req, res, next, name);
+    var value = await findEmail(req, res, next, name);
     //console.log(success);
     if (success) {
         //console.log("user exists");
-        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/users.html', { username: name });
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/users.html', { username: name, email: value });
     } else {
         //console.log("user does not exist");
         res.send("User does not exist");
