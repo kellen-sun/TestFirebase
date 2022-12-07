@@ -3,5 +3,4 @@ A test to learn the basic functionality of firebase using javascript, npm and ex
 
 To-Do:
 *format some of the res.send() to be res.render(file) so that it looks better
-*make psw appear not visible thing
 *google authentication
