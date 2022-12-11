@@ -19,13 +19,9 @@ app.use(express.static('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/Tes
 
 app.post('/newUser', async (req, res, next) => {
     var data = req.body.username;
-    console.log(data);
-    //console.log(req);
     //this function adds the data to the database
     var success = createUser(req, res, next);
-    console.log(success);
     success.then(function(result) {
-        console.log(result)
         if (result[0]){
             res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/newUser.html', { username: data });
         } else if (result[1]=="1"){
@@ -40,13 +36,9 @@ app.post('/newUser', async (req, res, next) => {
 
 app.post('/returningUser', async (req, res, next) => {
     var data = req.body.username;
-    console.log(data);
-    //console.log(req);
-    //this function adds the data to the database
+    //this function checks if psw and username matches
     var success = checkPassword(req, res, next);
-    console.log(success);
     success.then(function(result) {
-        console.log(result)
         if (result[0]){
             res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/returningUser.html', { username: data });
         } else if (result[1]=="1"){
@@ -170,12 +162,9 @@ app.get('/users/:name', async (req, res, next) => {
     var name = req.param('name');
     var success = await checkUser(req, res, next, name);
     var value = await findEmail(req, res, next, name);
-    //console.log(success);
     if (success) {
-        //console.log("user exists");
         res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/users.html', { username: name, email: value });
     } else {
-        //console.log("user does not exist");
         res.send("User does not exist");
     }
 });
@@ -183,12 +172,9 @@ app.get('/users/:name', async (req, res, next) => {
 app.post('/users', async (req, res, next) => {
     var success = deleteUser(req, res, next);
     success.then(function(result) {
-        //console.log(result)
         if (result[0]) {
-            console.log("Account deleted");
             res.send("Account deleted successfully :(");
         } else {
-            console.log(result[1]);
             res.send(result[1]);
         }
     });

@@ -47,14 +47,11 @@ const checkPassword = async (req, res, next) => {
         var name = data.username;
         var password = data.password;
         if (name && password) {
-            //checks if it's nonnzero inputs
-            
+            //checks if there's empty inputs
             //now checking if username is taken
             var success1 = await checkUser(req, res, next, name);
             var psw2 = "";
-            console.log(success1)
             if (success1) {
-                //console.log("user exists");
                 const db = firestore.collection('users');
                 const snapshot = await (await db.where('username', '==', name).get()).docs;
                 snapshot.forEach((doc) => {
@@ -67,12 +64,10 @@ const checkPassword = async (req, res, next) => {
                 }
             } else {
                 return [false, "2"];
-                //console.log("user does not exist");
             } 
         }
         else {
             //so now it won't create the user (in the database) if one of the fields is empty
-            console.log("Empty field.")
             return [false, "1"];
         }
     }
@@ -87,16 +82,12 @@ const createUser = async (req, res, next) => {
         var name = data.username;
         var email = data.email;
         if (data.email && data.password && data.username) {
-            //checks if it's nonnzero inputs
-            
+            //checks if it's empty inputs
             //now checking if username is taken
             var success1 = await checkUser(req, res, next, name);
-            console.log(success1)
             if (success1) {
-                //console.log("user exists");
                 return [false, "2"];
             } else {
-                //console.log("user does not exist");
                 var success2 = await checkEmail(req,res,next,email);
                 if (success2) {
                     return [false, "3"]
@@ -109,7 +100,6 @@ const createUser = async (req, res, next) => {
         }
         else {
             //so now it won't create the user (in the database) if one of the fields is empty
-            console.log("Empty field.")
             return [false, "1"];
         }
     }
@@ -121,7 +111,6 @@ const createUser = async (req, res, next) => {
 const updateUser = async (req, res, next) => {
     try {
         const data = req.body;
-        console.log(data);
         var output = [false, 'Incorrect Email'];
         const user = await firestore.collection('users').where("email", "==", data.email)
             .get()
@@ -146,7 +135,7 @@ const updateUser = async (req, res, next) => {
         return(output);
     }
     catch (error) {
-        console.log(error);
+        console.log(error.message);
     }
 }
 
@@ -170,7 +159,7 @@ const deleteUser = async (req, res, next) => {
         return(output);
     }
     catch (error) {
-        console.log(error);
+        console.log(error.message);
     }
 }
 
@@ -188,7 +177,7 @@ const findEmail = async (req, res, next, name) => {
         return(output);
     }
     catch (error) {
-        //res.status(400).send(error.message);
+        console.log(error.message);
     }
 };
 
