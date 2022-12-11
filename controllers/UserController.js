@@ -40,6 +40,47 @@ const checkEmail = async (req, res, next, email) => {
     }
 };
 
+const checkPassword = async (req, res, next) => {
+    //checks if the username and password matches
+    try {
+        const data = req.body;
+        var name = data.username;
+        var password = data.password;
+        if (name && password) {
+            //checks if it's nonnzero inputs
+            
+            //now checking if username is taken
+            var success1 = await checkUser(req, res, next, name);
+            var psw2 = "";
+            console.log(success1)
+            if (success1) {
+                //console.log("user exists");
+                const db = firestore.collection('users');
+                const snapshot = await (await db.where('username', '==', name).get()).docs;
+                snapshot.forEach((doc) => {
+                    psw2 = doc.data().password;
+                });
+                if (psw2 == password){
+                    return [true]
+                } else {
+                    return [false, "3"]
+                }
+            } else {
+                return [false, "2"];
+                //console.log("user does not exist");
+            } 
+        }
+        else {
+            //so now it won't create the user (in the database) if one of the fields is empty
+            console.log("Empty field.")
+            return [false, "1"];
+        }
+    }
+    catch (error) {
+        console.log(error.message);
+    }
+};
+
 const createUser = async (req, res, next) => {
     try {
         const data = req.body;
@@ -158,5 +199,6 @@ module.exports = {
     updateUser,
     deleteUser,
     checkUser,
-    checkEmail
+    checkEmail,
+    checkPassword
 };

@@ -23,7 +23,10 @@
        <input type="checkbox" onclick="togglePassword()">Show Password <br><br>
        <input class = "button" type="submit" value="Submit">
    </form>
-
+   <p>
+    Already have an account? <br>
+    <a href="/signin">Sign In</a>
+   </p>
    <script>
     document.getElementById("password").type = "password";
     if (! sessionStorage.account){

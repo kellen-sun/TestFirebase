@@ -17,7 +17,7 @@
     </div>
     <div class="main">
         <p>
-            User Created Successfully!
+            Signed In Successfully!
         </p>
 
         <h1>WELCOME <%= username %>!</h1>
@@ -31,9 +31,6 @@
  </body>
 </html>
 <script>
-if (! sessionStorage.account){
-    sessionStorage.account = false;
-}
 sessionStorage.account = true;
 sessionStorage.name = "<%= username %>";
 document.getElementById("login").href="/users/"+sessionStorage.name;

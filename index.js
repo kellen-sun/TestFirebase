@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const config = require('./config');
-const {createUser, findEmail, updateUser, deleteUser, checkUser} = require('./controllers/UserController');
+const {createUser, findEmail, updateUser, deleteUser, checkUser, checkPassword} = require('./controllers/UserController');
 
 const app = express(); //this is our application/website, which is important
 app.set('view engine', 'html');
@@ -36,6 +36,59 @@ app.post('/newUser', async (req, res, next) => {
             res.redirect('/createAccount/error3');
         };
     });
+});
+
+app.post('/returningUser', async (req, res, next) => {
+    var data = req.body.username;
+    console.log(data);
+    //console.log(req);
+    //this function adds the data to the database
+    var success = checkPassword(req, res, next);
+    console.log(success);
+    success.then(function(result) {
+        console.log(result)
+        if (result[0]){
+            res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/returningUser.html', { username: data });
+        } else if (result[1]=="1"){
+            res.redirect('/signin/error1');
+        } else if (result[1]=="2"){
+            res.redirect('/signin/error2');
+        } else if (result[1]=="3"){
+            res.redirect('/signin/error3');
+        }
+    });
+});
+
+app.post('/signin/:error', function (req, res, next) {
+    if (req.param('error')=='error1'){
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/signin.html', { error: "One of the fields is empty" });
+    } else if (req.param('error')=='error2'){
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/signin.html', { error: "Username doesn't exist" });
+    } else if (req.param('error')=='error3') {
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/signin.html', { error: "Incorrect Password" });
+    } else {
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/signin.html', { error: "" });
+    }
+});
+
+app.get('/signin/:error', function (req, res, next) {
+    if (req.param('error')=='error1'){
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/signin.html', { error: "One of the fields is empty" });
+    } else if (req.param('error')=='error2'){
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/signin.html', { error: "Username doesn't exist" });
+    } else if (req.param('error')=='error3') {
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/signin.html', { error: "Incorrect Password" });
+    } else {
+        res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/signin.html', { error: "" });
+    }
+});
+
+app.get('/signin', function(req, res, next) {
+    res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/signin.html', { error: "" });
+});
+
+app.post('/signin', function(req, res, next) {
+    res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/signin.html', { error: "" });
 });
 
 app.get('/', function (req, res, next) {
