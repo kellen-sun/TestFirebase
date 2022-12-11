@@ -10,8 +10,9 @@
  <body>
   <div class="navbar">
     <a href="/home">Home</a>
-    <a href="#news">News</a>
-    <a href="/user">Contact</a>
+    <a href="/home#news">News</a>
+    <a href="/home#contact">Contact</a>
+    <a href="/login" id="login">Login</a>
   </div>
   <div class="main">
     <p>
@@ -51,5 +52,12 @@ function togglePassword2() {
   } else {
     x.type = "password";
   }
+}
+if (sessionStorage.account=="true"){
+    document.getElementById("login").href="/users/"+sessionStorage.name;
+    document.getElementById("login").innerText="Profile";
+} else {
+    document.getElementById("login").href="/login";
+    document.getElementById("login").innerText="Login";
 }
 </script>

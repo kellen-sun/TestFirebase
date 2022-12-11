@@ -9,6 +9,13 @@
 
 
  <body>
+  <div class="navbar">
+    <a href="/home">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="/login" id="login">Login</a>
+  </div>
+  <div class="main">
    <h1>Create Account</h1>
    <p>
     <%= error %>
@@ -27,7 +34,10 @@
     Already have an account? <br>
     <a href="/signin">Sign In</a>
    </p>
-   <script>
+  </div>
+ </body>
+</html>
+<script>
     document.getElementById("password").type = "password";
     if (! sessionStorage.account){
     sessionStorage.account = [false];
@@ -40,6 +50,11 @@
         x.type = "password";
       }
     }
-    </script>
- </body>
-</html>
+    if (sessionStorage.account=="true"){
+        document.getElementById("login").href="/users/"+sessionStorage.name;
+        document.getElementById("login").innerText="Profile";
+    } else {
+        document.getElementById("login").href="/login";
+        document.getElementById("login").innerText="Login";
+    }
+</script>
