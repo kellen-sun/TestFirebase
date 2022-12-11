@@ -39,3 +39,16 @@
   </div>
  </body>
 </html>
+<script>
+if (! sessionStorage.account){
+  sessionStorage.account = false;
+}
+console.log(sessionStorage.account);
+if (sessionStorage.account=='true'){
+  if (sessionStorage.name!="<%= username %>"){
+    window.location.href = "/home";
+  }
+} else {
+  window.location.href = "/home";
+}
+</script>

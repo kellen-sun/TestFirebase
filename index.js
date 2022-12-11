@@ -86,6 +86,14 @@ app.get('/login', function (req, res, next) {
     res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/login.html');
 });
 
+app.post('/signout', function (req, res, next) {
+    res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/signout.html');
+});
+
+app.get('/signout', function (req, res, next) {
+    res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/signout.html');
+});
+
 app.post('/login', function (req, res, next) {
     res.render('C:/Users/sunke/Desktop/Kellen/Programming/Javascript/TestFirebase/templates/login.html');
 });

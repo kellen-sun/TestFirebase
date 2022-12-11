@@ -54,3 +54,17 @@
     </div>
   </body>
 </html>
+<script>
+console.log(sessionStorage.account);
+console.log(sessionStorage.name)
+if (! sessionStorage.account){
+    sessionStorage.account = false;
+}
+if (sessionStorage.account=="true"){
+    document.getElementById("login").href="/users/"+sessionStorage.name;
+    document.getElementById("login").innerText="Profile";
+} else {
+    document.getElementById("login").href="/login";
+    document.getElementById("login").innerText="Login";
+}
+</script>

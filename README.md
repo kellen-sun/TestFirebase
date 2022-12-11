@@ -2,8 +2,8 @@
 A test to learn the basic functionality of firebase using javascript, npm and express
 
 To-Do:
-*develop a way to check if an user is signed in, show the home page differently if signed in or not signed in. as well as profile page links, signup/login functions and so on
-*would need a signout function
+*signin to get back into an already created account by checking credentials
+*add the nav bar to all pages, (displaying profile when signed in, and logout when signed out) with exception for when ur on the profile page then it displays a signout chioce.
 *ie: the home page would majorly change and current signup functions would move to a new page.
 *format some of the res.send() to be res.render(file) so that it looks better
 *google authentication

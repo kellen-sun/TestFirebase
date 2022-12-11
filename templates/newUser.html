@@ -22,3 +22,10 @@
     </form>
  </body>
 </html>
+<script>
+if (! sessionStorage.account){
+    sessionStorage.account = false;
+}
+sessionStorage.account = true;
+sessionStorage.name = "<%= username %>";
+</script>
