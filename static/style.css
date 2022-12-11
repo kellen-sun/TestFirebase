@@ -36,7 +36,11 @@ label {
   background-color: #333;
   position: fixed;
   top: 0;
-  width: 105%;
+  width: 100%;
+}
+
+#login {
+  float: right;
 }
 
 .navbar a {

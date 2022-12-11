@@ -1,39 +1,56 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
- <head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-   <title>Home</title>
-   <link rel="stylesheet" href="../style.css" type="text/css">
- </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Home</title>
+    <link rel="stylesheet" href="../style.css" type="text/css">
+  </head>
 
+  <body>
+    <div class="navbar">
+      <a href="/home">Home</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+      <a href="/login" id="login">Login</a>
+    </div>
+    <div class="main">
+        <h1>Welcome to Found It!</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo. Ultrices eros in cursus turpis massa tincidunt dui. Purus ut faucibus pulvinar elementum integer enim. Purus semper eget duis at tellus at. Arcu ac tortor dignissim convallis aenean et tortor. Dui sapien eget mi proin. Malesuada pellentesque elit eget gravida cum sociis. Feugiat sed lectus vestibulum mattis ullamcorper velit. Sit amet consectetur adipiscing elit duis. Nulla aliquet enim tortor at auctor urna nunc. Purus in massa tempor nec feugiat nisl pretium. Eget duis at tellus at urna condimentum mattis. Vivamus at augue eget arcu dictum varius duis at consectetur.
 
- <body>
-   <h1>Create User</h1>
-   <p>
-    <%= error %>
-   </p>
-   <form id="createUser" action="/newUser" method="POST">
-       <label for="username">Username:</label><br>
-       <input type="text" id="username" name="username" value=""><br>
-       <label for="email">Email:</label><br>
-       <input type="text" id="email" name="email" value=""><br>
-       <label for="password">Password:</label><br>
-       <input type="text" id="password" name="password" value=""><br>
-       <input type="checkbox" onclick="togglePassword()">Show Password <br><br>
-       <input class = "button" type="submit" value="Submit">
-   </form>
+            Mi ipsum faucibus vitae aliquet nec. Purus non enim praesent elementum. In massa tempor nec feugiat nisl pretium. Massa enim nec dui nunc mattis enim ut. Viverra orci sagittis eu volutpat odio. Quam vulputate dignissim suspendisse in est ante in. Aenean pharetra magna ac placerat vestibulum lectus. Viverra mauris in aliquam sem fringilla. Diam in arcu cursus euismod quis viverra nibh cras. Duis at tellus at urna. Porta nibh venenatis cras sed. Aliquet sagittis id consectetur purus ut faucibus pulvinar. Lacus suspendisse faucibus interdum posuere lorem. In ante metus dictum at tempor commodo ullamcorper a.
+            
+            Massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin. A scelerisque purus semper eget duis at tellus. Nulla aliquet enim tortor at auctor urna nunc id. Fringilla urna porttitor rhoncus dolor purus non enim praesent elementum. Laoreet sit amet cursus sit amet. Nunc pulvinar sapien et ligula ullamcorper malesuada. Id cursus metus aliquam eleifend mi in. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Quis commodo odio aenean sed adipiscing diam. Sit amet volutpat consequat mauris nunc congue nisi vitae suscipit. Felis imperdiet proin fermentum leo vel orci porta non pulvinar. At consectetur lorem donec massa sapien. Et netus et malesuada fames ac turpis egestas. Eu mi bibendum neque egestas congue. Nulla facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Mollis nunc sed id semper risus in hendrerit gravida.
+            
+            Convallis posuere morbi leo urna molestie at elementum eu facilisis. Egestas sed sed risus pretium quam vulputate. Eleifend mi in nulla posuere. Laoreet id donec ultrices tincidunt. Libero nunc consequat interdum varius sit amet mattis. Diam sit amet nisl suscipit. Id donec ultrices tincidunt arcu. Et magnis dis parturient montes nascetur ridiculus mus mauris vitae. Vulputate dignissim suspendisse in est ante in nibh mauris cursus. Sit amet commodo nulla facilisi. In ornare quam viverra orci sagittis eu volutpat. Mattis vulputate enim nulla aliquet. Cursus eget nunc scelerisque viverra mauris in aliquam sem. Nibh nisl condimentum id venenatis a condimentum. Lobortis scelerisque fermentum dui faucibus. Volutpat sed cras ornare arcu. Eu mi bibendum neque egestas congue quisque egestas diam in.
+            
+            Purus in mollis nunc sed id semper risus. Sed faucibus turpis in eu mi. Metus dictum at tempor commodo ullamcorper. Suspendisse interdum consectetur libero id faucibus. Volutpat est velit egestas dui id. Mi bibendum neque egestas congue quisque. Ac turpis egestas integer eget aliquet. Convallis posuere morbi leo urna molestie at elementum. Pellentesque eu tincidunt tortor aliquam nulla. Proin fermentum leo vel orci porta. In egestas erat imperdiet sed euismod nisi porta lorem mollis. Consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo. Sodales neque sodales ut etiam. Malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Pretium vulputate sapien nec sagittis aliquam. 
+        </p>
+        <h1 id="news"><br>News</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo. Ultrices eros in cursus turpis massa tincidunt dui. Purus ut faucibus pulvinar elementum integer enim. Purus semper eget duis at tellus at. Arcu ac tortor dignissim convallis aenean et tortor. Dui sapien eget mi proin. Malesuada pellentesque elit eget gravida cum sociis. Feugiat sed lectus vestibulum mattis ullamcorper velit. Sit amet consectetur adipiscing elit duis. Nulla aliquet enim tortor at auctor urna nunc. Purus in massa tempor nec feugiat nisl pretium. Eget duis at tellus at urna condimentum mattis. Vivamus at augue eget arcu dictum varius duis at consectetur.
 
-   <script>
-    document.getElementById("password").type = "password";
-    function togglePassword() {
-      var x = document.getElementById("password");
-      if (x.type === "password") {
-        x.type = "text";
-      } else {
-        x.type = "password";
-      }
-    }
-    </script>
- </body>
+            Mi ipsum faucibus vitae aliquet nec. Purus non enim praesent elementum. In massa tempor nec feugiat nisl pretium. Massa enim nec dui nunc mattis enim ut. Viverra orci sagittis eu volutpat odio. Quam vulputate dignissim suspendisse in est ante in. Aenean pharetra magna ac placerat vestibulum lectus. Viverra mauris in aliquam sem fringilla. Diam in arcu cursus euismod quis viverra nibh cras. Duis at tellus at urna. Porta nibh venenatis cras sed. Aliquet sagittis id consectetur purus ut faucibus pulvinar. Lacus suspendisse faucibus interdum posuere lorem. In ante metus dictum at tempor commodo ullamcorper a.
+            
+            Massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin. A scelerisque purus semper eget duis at tellus. Nulla aliquet enim tortor at auctor urna nunc id. Fringilla urna porttitor rhoncus dolor purus non enim praesent elementum. Laoreet sit amet cursus sit amet. Nunc pulvinar sapien et ligula ullamcorper malesuada. Id cursus metus aliquam eleifend mi in. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Quis commodo odio aenean sed adipiscing diam. Sit amet volutpat consequat mauris nunc congue nisi vitae suscipit. Felis imperdiet proin fermentum leo vel orci porta non pulvinar. At consectetur lorem donec massa sapien. Et netus et malesuada fames ac turpis egestas. Eu mi bibendum neque egestas congue. Nulla facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Mollis nunc sed id semper risus in hendrerit gravida.
+            
+            Convallis posuere morbi leo urna molestie at elementum eu facilisis. Egestas sed sed risus pretium quam vulputate. Eleifend mi in nulla posuere. Laoreet id donec ultrices tincidunt. Libero nunc consequat interdum varius sit amet mattis. Diam sit amet nisl suscipit. Id donec ultrices tincidunt arcu. Et magnis dis parturient montes nascetur ridiculus mus mauris vitae. Vulputate dignissim suspendisse in est ante in nibh mauris cursus. Sit amet commodo nulla facilisi. In ornare quam viverra orci sagittis eu volutpat. Mattis vulputate enim nulla aliquet. Cursus eget nunc scelerisque viverra mauris in aliquam sem. Nibh nisl condimentum id venenatis a condimentum. Lobortis scelerisque fermentum dui faucibus. Volutpat sed cras ornare arcu. Eu mi bibendum neque egestas congue quisque egestas diam in.
+            
+            Purus in mollis nunc sed id semper risus. Sed faucibus turpis in eu mi. Metus dictum at tempor commodo ullamcorper. Suspendisse interdum consectetur libero id faucibus. Volutpat est velit egestas dui id. Mi bibendum neque egestas congue quisque. Ac turpis egestas integer eget aliquet. Convallis posuere morbi leo urna molestie at elementum. Pellentesque eu tincidunt tortor aliquam nulla. Proin fermentum leo vel orci porta. In egestas erat imperdiet sed euismod nisi porta lorem mollis. Consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo. Sodales neque sodales ut etiam. Malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Pretium vulputate sapien nec sagittis aliquam. 
+        </p>
+        <h1 id="contact"><br>Contact</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo. Ultrices eros in cursus turpis massa tincidunt dui. Purus ut faucibus pulvinar elementum integer enim. Purus semper eget duis at tellus at. Arcu ac tortor dignissim convallis aenean et tortor. Dui sapien eget mi proin. Malesuada pellentesque elit eget gravida cum sociis. Feugiat sed lectus vestibulum mattis ullamcorper velit. Sit amet consectetur adipiscing elit duis. Nulla aliquet enim tortor at auctor urna nunc. Purus in massa tempor nec feugiat nisl pretium. Eget duis at tellus at urna condimentum mattis. Vivamus at augue eget arcu dictum varius duis at consectetur.
+
+            Mi ipsum faucibus vitae aliquet nec. Purus non enim praesent elementum. In massa tempor nec feugiat nisl pretium. Massa enim nec dui nunc mattis enim ut. Viverra orci sagittis eu volutpat odio. Quam vulputate dignissim suspendisse in est ante in. Aenean pharetra magna ac placerat vestibulum lectus. Viverra mauris in aliquam sem fringilla. Diam in arcu cursus euismod quis viverra nibh cras. Duis at tellus at urna. Porta nibh venenatis cras sed. Aliquet sagittis id consectetur purus ut faucibus pulvinar. Lacus suspendisse faucibus interdum posuere lorem. In ante metus dictum at tempor commodo ullamcorper a.
+            
+            Massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin. A scelerisque purus semper eget duis at tellus. Nulla aliquet enim tortor at auctor urna nunc id. Fringilla urna porttitor rhoncus dolor purus non enim praesent elementum. Laoreet sit amet cursus sit amet. Nunc pulvinar sapien et ligula ullamcorper malesuada. Id cursus metus aliquam eleifend mi in. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Quis commodo odio aenean sed adipiscing diam. Sit amet volutpat consequat mauris nunc congue nisi vitae suscipit. Felis imperdiet proin fermentum leo vel orci porta non pulvinar. At consectetur lorem donec massa sapien. Et netus et malesuada fames ac turpis egestas. Eu mi bibendum neque egestas congue. Nulla facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Mollis nunc sed id semper risus in hendrerit gravida.
+            
+            Convallis posuere morbi leo urna molestie at elementum eu facilisis. Egestas sed sed risus pretium quam vulputate. Eleifend mi in nulla posuere. Laoreet id donec ultrices tincidunt. Libero nunc consequat interdum varius sit amet mattis. Diam sit amet nisl suscipit. Id donec ultrices tincidunt arcu. Et magnis dis parturient montes nascetur ridiculus mus mauris vitae. Vulputate dignissim suspendisse in est ante in nibh mauris cursus. Sit amet commodo nulla facilisi. In ornare quam viverra orci sagittis eu volutpat. Mattis vulputate enim nulla aliquet. Cursus eget nunc scelerisque viverra mauris in aliquam sem. Nibh nisl condimentum id venenatis a condimentum. Lobortis scelerisque fermentum dui faucibus. Volutpat sed cras ornare arcu. Eu mi bibendum neque egestas congue quisque egestas diam in.
+            
+            Purus in mollis nunc sed id semper risus. Sed faucibus turpis in eu mi. Metus dictum at tempor commodo ullamcorper. Suspendisse interdum consectetur libero id faucibus. Volutpat est velit egestas dui id. Mi bibendum neque egestas congue quisque. Ac turpis egestas integer eget aliquet. Convallis posuere morbi leo urna molestie at elementum. Pellentesque eu tincidunt tortor aliquam nulla. Proin fermentum leo vel orci porta. In egestas erat imperdiet sed euismod nisi porta lorem mollis. Consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo. Sodales neque sodales ut etiam. Malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Pretium vulputate sapien nec sagittis aliquam. 
+        </p>
+    </div>
+  </body>
 </html>
